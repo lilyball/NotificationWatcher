@@ -4,6 +4,7 @@
 
 @interface WatcherController : NSObject
 {
+	IBOutlet NSWindow *prefsWindow;
     IBOutlet NSTextField *objectText;
     IBOutlet NSTableView *distNotificationList;
     IBOutlet NSTableView *wsNotificationList;
@@ -14,6 +15,7 @@
     NSNotification *selectedWSNotification;
 }
 - (IBAction)clearNotifications:(id)sender;
+- (IBAction)showPrefs:(id)sender;
 - (void)selectNotification:(NSNotification*)aNotification;
 - (void)distNotificationHook:(NSNotification*)aNotification;
 - (void)wsNotificationHook:(NSNotification*)aNotification;

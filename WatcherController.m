@@ -57,6 +57,10 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 	[super dealloc];
 }
 
+- (IBAction)showPrefs:(id)sender {
+	[prefsWindow makeKeyAndOrderFront:sender];
+}
+
 - (void)distNotificationHook:(NSNotification*)aNotification
 {
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kHideProcessSwitchNotificationPref]) {

@@ -15,12 +15,13 @@
             SUPERCLASS = NSObject; 
         }, 
         {
-            ACTIONS = {clearNotifications = id; selectNotification = id; }; 
+            ACTIONS = {clearNotifications = id; showPrefs = id; }; 
             CLASS = WatcherController; 
             LANGUAGE = ObjC; 
             OUTLETS = {
                 distNotificationList = NSTableView; 
                 objectText = NSTextField; 
+                prefsWindow = NSWindow; 
                 userInfoList = NSTableView; 
                 wsNotificationList = NSTableView; 
             }; 

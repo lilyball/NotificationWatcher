@@ -1,6 +1,7 @@
 #import "WatcherController.h"
 #import "Globals.h"
 #import "Extensions.h"
+#import <mach-o/dyld.h>
 
 static NSDictionary *italicAttributesForFont(NSFont *aFont)
 {
@@ -11,8 +12,15 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 		attrDict = [NSDictionary dictionaryWithObject:newFont
 											   forKey:NSFontAttributeName];
 	} else {
-		attrDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:0.16]
-											   forKey:NSObliquenessAttributeName];
+		// NSObliquenessAttributeName isn't available on Jaguar
+		if (NSIsSymbolNameDefined("NSObliquenessAttributeName")) {
+			NSSymbol attrSymbol = NSLookupAndBindSymbol("NSObliquenessAttributeName");
+			NSString *attr = (NSString *)NSAddressOfSymbol(attrSymbol);
+			attrDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:0.16]
+												   forKey:attr];
+		} else {
+			attrDict = [NSDictionary dictionary];
+		}
 	}
 	return attrDict;
 }

@@ -7,7 +7,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
     NSFont *newFont = [[NSFontManager sharedFontManager] convertFont:aFont
                                                          toHaveTrait:NSItalicFontMask];
     NSDictionary *attrDict;
-    if (newFont != aFont) {
+    if (![newFont isEqual:aFont]) {
         attrDict = [NSDictionary dictionaryWithObject:newFont
                                                forKey:NSFontAttributeName];
     } else {
@@ -49,6 +49,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 - (void)dealloc
 {
     [[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
+	[[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self];
     [selectedDistNotification release];
     [selectedWSNotification release];
     [distNotifications release];
@@ -63,14 +64,28 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
             [[aNotification name] isEqualToString:@"AppleSystemUIModeChanged"])
             return;
     }
+	NSRect visibleRect = [distNotificationList visibleRect];
+	NSRect bounds = [distNotificationList bounds];
+	BOOL atBottom = ((visibleRect.origin.y + visibleRect.size.height) ==
+						(bounds.origin.y + bounds.size.height));
     [distNotifications addObject:[[aNotification copy] autorelease]];
     [distNotificationList noteNumberOfRowsChanged];
+	if (atBottom) {
+		[distNotificationList scrollRowToVisible:[distNotificationList numberOfRows] - 1];
+	}
 }
 
 - (void)wsNotificationHook:(NSNotification*)aNotification
 {
-    [wsNotifications addObject:[[aNotification copy] autorelease]];
+    NSRect visibleRect = [wsNotificationList visibleRect];
+	NSRect bounds = [wsNotificationList bounds];
+	BOOL atBottom = ((visibleRect.origin.y + visibleRect.size.height) ==
+					 (bounds.origin.y + bounds.size.height));
+	[wsNotifications addObject:[[aNotification copy] autorelease]];
     [wsNotificationList noteNumberOfRowsChanged];
+	if (atBottom) {
+		[wsNotificationList scrollRowToVisible:[wsNotificationList numberOfRows] - 1];
+	}
 }
 
 - (void)selectNotification:(NSNotification*)aNotification

@@ -391,8 +391,9 @@
 		};
 		4A9504CDFFE6A4B311CA0CBA = {
 			buildSettings = {
-				COPY_PHASE_STRIP = YES;
+				COPY_PHASE_STRIP = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				UNSTRIPPED_PRODUCT = YES;
 				ZERO_LINK = NO;
 			};
 			isa = PBXBuildStyle;

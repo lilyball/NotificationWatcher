@@ -13,9 +13,9 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 											   forKey:NSFontAttributeName];
 	} else {
 		// NSObliquenessAttributeName isn't available on Jaguar
-		if (NSIsSymbolNameDefined("NSObliquenessAttributeName")) {
-			NSSymbol attrSymbol = NSLookupAndBindSymbol("NSObliquenessAttributeName");
-			NSString *attr = (NSString *)NSAddressOfSymbol(attrSymbol);
+		if (NSIsSymbolNameDefined("_NSObliquenessAttributeName")) {
+			NSSymbol attrSymbol = NSLookupAndBindSymbol("_NSObliquenessAttributeName");
+			NSString *attr = *(NSString **)NSAddressOfSymbol(attrSymbol);
 			attrDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:0.16]
 												   forKey:attr];
 		} else {

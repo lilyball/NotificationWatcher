@@ -1,0 +1,31 @@
+{
+    IBClasses = (
+        {CLASS = FirstResponder; LANGUAGE = ObjC; SUPERCLASS = NSObject; }, 
+        {
+            ACTIONS = {copy = id; }; 
+            CLASS = MyTableView; 
+            LANGUAGE = ObjC; 
+            SUPERCLASS = NSTableView; 
+        }, 
+        {
+            ACTIONS = {changeProcessActivation = id; }; 
+            CLASS = PreferencesController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {processActivationCheck = NSButton; }; 
+            SUPERCLASS = NSObject; 
+        }, 
+        {
+            ACTIONS = {clearNotifications = id; selectNotification = id; }; 
+            CLASS = WatcherController; 
+            LANGUAGE = ObjC; 
+            OUTLETS = {
+                distNotificationList = NSTableView; 
+                objectText = NSTextField; 
+                userInfoList = NSTableView; 
+                wsNotificationList = NSTableView; 
+            }; 
+            SUPERCLASS = NSObject; 
+        }
+    ); 
+    IBVersion = 1; 
+}

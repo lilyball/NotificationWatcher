@@ -120,6 +120,19 @@
 			settings = {
 			};
 		};
+		0A562F16070DE99700B57DD1 = {
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			isa = PBXShellScriptBuildPhase;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$SRCROOT/bltrversion\" \"$INFOPLIST_FILE\"";
+		};
 		0AD481D20607EBA0002E583F = {
 			fileEncoding = 4;
 			isa = PBXFileReference;
@@ -415,6 +428,7 @@
 				8D1107290486CEB800E47090,
 				8D11072C0486CEB800E47090,
 				8D11072E0486CEB800E47090,
+				0A562F16070DE99700B57DD1,
 			);
 			buildRules = (
 			);

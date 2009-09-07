@@ -76,8 +76,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	}
 }
 
-- (void)wsNotificationHook:(NSNotification*)aNotification
-{
+- (void)wsNotificationHook:(NSNotification*)aNotification {
 	NSRect visibleRect = [wsNotificationList visibleRect];
 	NSRect bounds = [wsNotificationList bounds];
 	BOOL atBottom = ((visibleRect.origin.y + visibleRect.size.height) ==
@@ -152,7 +151,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	[userInfoList reloadData];
 }
 
-- (int)numberOfRowsInTableView:(NSTableView *)aTableView {
+- (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {
 	if (aTableView == distNotificationList) {
 		return [distNotifications count];
 	} else if (aTableView == wsNotificationList) {
@@ -168,8 +167,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	}
 }
 
-- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn
-			row:(int)rowIndex {
+- (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
 	if (aTableView == distNotificationList) {
 		return [[distNotifications objectAtIndex:rowIndex] name];
 	} else if (aTableView == wsNotificationList) {
@@ -193,8 +191,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	}
 }
 
-- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
-{
+- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard {
 	NSMutableArray *rowStrings = [NSMutableArray array];
 	NSUInteger rowIdx;
 	for (rowIdx = [rowIndexes firstIndex]; rowIdx != NSNotFound; rowIdx = [rowIndexes indexGreaterThanIndex:rowIdx]) {

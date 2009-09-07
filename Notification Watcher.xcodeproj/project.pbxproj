@@ -292,6 +292,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				SDKROOT = macosx10.5;
 			};
 			name = Development;
 		};
@@ -299,6 +300,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				SDKROOT = macosx10.5;
 			};
 			name = Default;
 		};

@@ -47,6 +47,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 - (void)dealloc {
 	[[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
 	[[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 	[selectedDistNotification release];
 	[selectedWSNotification release];
 	[distNotifications release];

@@ -3,8 +3,7 @@
 #import "Extensions.h"
 #import <mach-o/dyld.h>
 
-static NSDictionary *italicAttributesForFont(NSFont *aFont)
-{
+static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	NSFont *newFont = [[NSFontManager sharedFontManager] convertFont:aFont
 														 toHaveTrait:NSItalicFontMask];
 	NSDictionary *attrDict;
@@ -12,23 +11,15 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 		attrDict = [NSDictionary dictionaryWithObject:newFont
 											   forKey:NSFontAttributeName];
 	} else {
-		// NSObliquenessAttributeName isn't available on Jaguar
-		if (NSIsSymbolNameDefined("_NSObliquenessAttributeName")) {
-			NSSymbol attrSymbol = NSLookupAndBindSymbol("_NSObliquenessAttributeName");
-			NSString *attr = *(NSString **)NSAddressOfSymbol(attrSymbol);
-			attrDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:0.16]
-												   forKey:attr];
-		} else {
-			attrDict = [NSDictionary dictionary];
-		}
+		attrDict = [NSDictionary dictionaryWithObject:[NSNumber numberWithFloat:0.16]
+											   forKey:NSObliquenessAttributeName];
 	}
 	return attrDict;
 }
 
 @implementation WatcherController
 
-- (id)init
-{
+- (id)init {
 	if (self = [super init]) {
 		distNotifications = [[NSMutableArray alloc] init];
 		wsNotifications = [[NSMutableArray alloc] init];
@@ -45,8 +36,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 	return self;
 }
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
 	NSNotificationCenter *nc = [NSNotificationCenter defaultCenter];
 	[nc addObserver:self selector:@selector(selectNotification:)
 			   name:NSTableViewSelectionDidChangeNotification object:distNotificationList];
@@ -54,8 +44,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 			   name:NSTableViewSelectionDidChangeNotification object:wsNotificationList];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
 	[[NSDistributedNotificationCenter defaultCenter] removeObserver:self];
 	[[[NSWorkspace sharedWorkspace] notificationCenter] removeObserver:self];
 	[selectedDistNotification release];
@@ -69,8 +58,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 	[prefsWindow makeKeyAndOrderFront:sender];
 }
 
-- (void)distNotificationHook:(NSNotification*)aNotification
-{
+- (void)distNotificationHook:(NSNotification*)aNotification {
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kHideProcessSwitchNotificationPref]) {
 		if ([[aNotification name] isEqualToString:@"com.apple.HIToolbox.menuBarShownNotification"] ||
 			[[aNotification name] isEqualToString:@"AppleSystemUIModeChanged"])
@@ -100,8 +88,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 	}
 }
 
-- (void)selectNotification:(NSNotification*)aNotification
-{
+- (void)selectNotification:(NSNotification*)aNotification {
 	id sender = [aNotification object];
 	[selectedDistNotification release];
 	selectedDistNotification = nil;
@@ -117,9 +104,8 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 		targetList = &wsNotifications;
 	}
 	if ([sender selectedRow] != -1) {
-		[[*targetList objectAtIndex:[sender selectedRow]] retain];
-		[*targetVar release];
-		*targetVar = [*targetList objectAtIndex:[sender selectedRow]];
+		[*targetVar autorelease];
+		*targetVar = [[*targetList objectAtIndex:[sender selectedRow]] retain];
 	}
 	if (*targetVar == nil) {
 		[objectText setStringValue:@""];
@@ -152,8 +138,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 	[userInfoList reloadData];
 }
 
-- (IBAction)clearNotifications:(id)sender
-{
+- (IBAction)clearNotifications:(id)sender {
 	[selectedDistNotification release];
 	selectedDistNotification = nil;
 	[selectedWSNotification release];
@@ -166,8 +151,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 	[userInfoList reloadData];
 }
 
-- (int)numberOfRowsInTableView:(NSTableView *)aTableView
-{
+- (int)numberOfRowsInTableView:(NSTableView *)aTableView {
 	if (aTableView == distNotificationList) {
 		return [distNotifications count];
 	} else if (aTableView == wsNotificationList) {
@@ -184,8 +168,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn
-			row:(int)rowIndex
-{
+			row:(int)rowIndex {
 	if (aTableView == distNotificationList) {
 		return [[distNotifications objectAtIndex:rowIndex] name];
 	} else if (aTableView == wsNotificationList) {
@@ -209,13 +192,11 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 	}
 }
 
-- (BOOL)tableView:(NSTableView *)tableView writeRows:(NSArray *)rows
-	 toPasteboard:(NSPasteboard *)pboard
+- (BOOL)tableView:(NSTableView *)tableView writeRowsWithIndexes:(NSIndexSet *)rowIndexes toPasteboard:(NSPasteboard *)pboard
 {
 	NSMutableArray *rowStrings = [NSMutableArray array];
-	NSEnumerator *e = [rows objectEnumerator];
-	id aRow;
-	while (aRow = [e nextObject]) {
+	NSUInteger rowIdx;
+	for (rowIdx = [rowIndexes firstIndex]; rowIdx != NSNotFound; rowIdx = [rowIndexes indexGreaterThanIndex:rowIdx]) {
 		NSMutableArray *columnStrings = [NSMutableArray array];
 		NSArray *columns = [tableView tableColumns];
 		NSEnumerator *colEnum = [columns objectEnumerator];
@@ -223,7 +204,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont)
 		while (aColumn = [colEnum nextObject]) {
 			[columnStrings addObject:[self tableView:tableView
 						   objectValueForTableColumn:aColumn
-												 row:[aRow intValue]]];
+												 row:rowIdx]];
 		}
 		[rowStrings addObject:[columnStrings joinWithSeparator:@"\t"]];
 	}

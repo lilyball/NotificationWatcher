@@ -2,8 +2,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface WatcherController : NSObject
-{
+@interface WatcherController : NSObject {
 	IBOutlet NSWindow *prefsWindow;
     IBOutlet NSTextField *objectText;
     IBOutlet NSTableView *distNotificationList;

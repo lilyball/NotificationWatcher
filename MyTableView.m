@@ -21,14 +21,8 @@
 
 - (IBAction)copy:(id)sender
 {
-    NSMutableArray *rows = [NSMutableArray array];
-    NSEnumerator *e = [self selectedRowEnumerator];
-    id aRow;
-    while (aRow = [e nextObject]) {
-        [rows addObject:aRow];
-    }
     NSPasteboard *pb = [NSPasteboard generalPasteboard];
-    [[self dataSource] tableView:self writeRows:rows toPasteboard:pb];
+	[[self dataSource] tableView:self writeRowsWithIndexes:[self selectedRowIndexes] toPasteboard:pb];
 }
 
 - (BOOL)becomeFirstResponder

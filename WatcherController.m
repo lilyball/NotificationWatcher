@@ -187,7 +187,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 			if ([[aTableColumn identifier] isEqualToString:@"key"]) {
 				return [[[*targetVar userInfo] allKeys] objectAtIndex:rowIndex];
 			} else {
-				return [[[*targetVar userInfo] allValues] objectAtIndex:rowIndex];
+				return [[[[*targetVar userInfo] allValues] objectAtIndex:rowIndex] description];
 			}
 		}
 	}

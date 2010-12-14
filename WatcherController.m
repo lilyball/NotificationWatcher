@@ -208,10 +208,10 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 						   objectValueForTableColumn:aColumn
 												 row:rowIdx]];
 		}
-		[rowStrings addObject:[columnStrings joinWithSeparator:@"\t"]];
+		[rowStrings addObject:[columnStrings componentsJoinedByString:@"\t"]];
 	}
 	[pboard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:nil];
-	[pboard setString:[rowStrings joinWithSeparator:@"\r"] forType:NSStringPboardType];
+	[pboard setString:[rowStrings componentsJoinedByString:@"\r"] forType:NSStringPboardType];
 	return YES;
 }
 

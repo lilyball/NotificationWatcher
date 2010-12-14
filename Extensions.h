@@ -8,10 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface NSArray (ArrayExtensions)
-- (NSString*)joinWithSeparator:(NSString*)sep;
-@end
-
 @interface NSTableView (TableViewExtensions)
 - (unsigned int)draggingSourceOperationMaskForLocal:(BOOL)isLocal;
 - (IBAction)copy:(id)sender;

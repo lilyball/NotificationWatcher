@@ -94,6 +94,8 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	selectedDistNotification = nil;
 	[selectedWSNotification release];
 	selectedWSNotification = nil;
+	[savedRowHeights release];
+	savedRowHeights = nil;
 	NSNotification **targetVar;
 	NSArray **targetList;
 	if (sender == distNotificationList) {
@@ -143,6 +145,8 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	selectedDistNotification = nil;
 	[selectedWSNotification release];
 	selectedWSNotification = nil;
+	[savedRowHeights release];
+	savedRowHeights = nil;
 	[distNotifications removeAllObjects];
 	[wsNotifications removeAllObjects];
 	[distNotificationList reloadData];
@@ -209,6 +213,30 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	[pboard declareTypes:[NSArray arrayWithObject:NSStringPboardType] owner:nil];
 	[pboard setString:[rowStrings joinWithSeparator:@"\r"] forType:NSStringPboardType];
 	return YES;
+}
+
+- (CGFloat)tableView:(NSTableView *)aTableView heightOfRow:(NSInteger)row {
+	if (aTableView != userInfoList || (selectedDistNotification == nil && selectedWSNotification == nil) ) {
+		return 14;
+	}
+
+	NSNotification *targetVar;
+	if (selectedDistNotification == nil) {
+		targetVar = selectedWSNotification;
+	} else {
+		targetVar = selectedDistNotification;
+	}
+	
+	if (savedRowHeights == nil) {
+		savedRowHeights = [[NSMutableArray alloc] init];
+	}
+	if ([savedRowHeights count] < row + 1) {
+		NSString *str = [[[[targetVar userInfo] allValues] objectAtIndex:row] description];
+		
+		NSSize size = [str sizeWithAttributes:[NSDictionary dictionaryWithObject:[NSFont fontWithName:@"Lucida Grande" size:11] forKey:NSFontAttributeName]];
+		[savedRowHeights insertObject:[NSNumber numberWithFloat:size.height] atIndex:row];
+	}
+	return [[savedRowHeights objectAtIndex:row] floatValue];
 }
 
 @end

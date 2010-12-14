@@ -12,6 +12,7 @@
     NSMutableArray *wsNotifications;
     NSNotification *selectedDistNotification;
     NSNotification *selectedWSNotification;
+	NSMutableArray *savedRowHeights;
 }
 - (IBAction)clearNotifications:(id)sender;
 - (IBAction)showPrefs:(id)sender;

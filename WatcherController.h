@@ -8,6 +8,7 @@
     IBOutlet NSTableView *distNotificationList;
     IBOutlet NSTableView *wsNotificationList;
     IBOutlet NSTableView *userInfoList;
+	IBOutlet NSSearchField *searchField;
     NSMutableArray *distNotifications;
     NSMutableArray *wsNotifications;
     NSNotification *selectedDistNotification;
@@ -16,6 +17,8 @@
 }
 - (IBAction)clearNotifications:(id)sender;
 - (IBAction)showPrefs:(id)sender;
+- (IBAction)didChangeFilter:(NSSearchField *)sender;
+- (IBAction)selectSearchField:(id)sender;
 - (void)selectNotification:(NSNotification*)aNotification;
 - (void)distNotificationHook:(NSNotification*)aNotification;
 - (void)wsNotificationHook:(NSNotification*)aNotification;

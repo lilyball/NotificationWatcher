@@ -17,6 +17,11 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	return attrDict;
 }
 
+@interface WatcherController ()
+- (NSArray *)filteredDistNotificationsWithString:(NSString *)filterValue;
+- (NSArray *)filteredWorkspaceNotificationsWithString:(NSString *)filterValue;
+@end
+
 @implementation WatcherController
 
 - (id)init {
@@ -59,6 +64,15 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	[prefsWindow makeKeyAndOrderFront:sender];
 }
 
+- (IBAction)didChangeFilter:(NSSearchField *)sender {
+	[distNotificationList noteNumberOfRowsChanged];
+	[wsNotificationList noteNumberOfRowsChanged];
+}
+
+- (IBAction)selectSearchField:(id)sender {
+	[searchField becomeFirstResponder];
+}
+
 - (void)distNotificationHook:(NSNotification*)aNotification {
 	if ([[NSUserDefaults standardUserDefaults] boolForKey:kHideProcessSwitchNotificationPref]) {
 		if ([[aNotification name] isEqualToString:@"com.apple.HIToolbox.menuBarShownNotification"] ||
@@ -97,17 +111,17 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	[savedRowHeights release];
 	savedRowHeights = nil;
 	NSNotification **targetVar;
-	NSArray **targetList;
+	NSArray *targetList;
 	if (sender == distNotificationList) {
 		targetVar = &selectedDistNotification;
-		targetList = &distNotifications;
+		targetList = [self filteredDistNotificationsWithString:[searchField stringValue]];
 	} else {
 		targetVar = &selectedWSNotification;
-		targetList = &wsNotifications;
+		targetList = [self filteredWorkspaceNotificationsWithString:[searchField stringValue]];
 	}
 	if ([sender selectedRow] != -1) {
 		[*targetVar autorelease];
-		*targetVar = [[*targetList objectAtIndex:[sender selectedRow]] retain];
+		*targetVar = [[targetList objectAtIndex:[sender selectedRow]] retain];
 	}
 	if (*targetVar == nil) {
 		[objectText setStringValue:@""];
@@ -155,11 +169,28 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	[userInfoList reloadData];
 }
 
+- (NSArray *)filteredDistNotificationsWithString:(NSString *)filterValue {
+	NSPredicate *filterPredicate = [NSPredicate predicateWithValue:YES];
+	if ([filterValue length] > 0) {
+		filterPredicate = [NSPredicate predicateWithFormat:@"name CONTAINS[c] %@ OR (object CONTAINS[c] %@)", filterValue, filterValue];
+	}
+	return [distNotifications filteredArrayUsingPredicate:filterPredicate];
+}
+
+- (NSArray *)filteredWorkspaceNotificationsWithString:(NSString *)filterValue {
+	NSPredicate *filterPredicate = [NSPredicate predicateWithValue:YES];
+	if ([filterValue length] > 0) {
+		filterPredicate = [NSPredicate predicateWithFormat:@"name CONTAINS[c] %@", filterValue];	
+	}
+	return [wsNotifications filteredArrayUsingPredicate:filterPredicate];
+}
+
 - (NSInteger)numberOfRowsInTableView:(NSTableView *)aTableView {
+	NSString *filterValue = [searchField stringValue];
 	if (aTableView == distNotificationList) {
-		return [distNotifications count];
+		return [[self filteredDistNotificationsWithString:filterValue] count];
 	} else if (aTableView == wsNotificationList) {
-		return [wsNotifications count];
+		return [[self filteredWorkspaceNotificationsWithString:filterValue] count];
 	} else {
 		if (selectedDistNotification == nil && selectedWSNotification == nil) {
 			return 0;
@@ -172,10 +203,11 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 }
 
 - (id)tableView:(NSTableView *)aTableView objectValueForTableColumn:(NSTableColumn *)aTableColumn row:(NSInteger)rowIndex {
+	NSString *filterValue = [searchField stringValue];
 	if (aTableView == distNotificationList) {
-		return [[distNotifications objectAtIndex:rowIndex] name];
+		return [[[self filteredDistNotificationsWithString:filterValue] objectAtIndex:rowIndex] name];
 	} else if (aTableView == wsNotificationList) {
-		return [[wsNotifications objectAtIndex:rowIndex] name];
+		return [[[self filteredWorkspaceNotificationsWithString:filterValue] objectAtIndex:rowIndex] name];
 	} else {
 		if (selectedDistNotification == nil && selectedWSNotification == nil) {
 			return @"";

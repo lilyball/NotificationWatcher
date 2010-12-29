@@ -11,13 +11,12 @@
 		0A4CD93B0607C46600B03983 /* WatcherController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4CD9390607C46600B03983 /* WatcherController.m */; };
 		0A4CD9630607CC8E00B03983 /* Globals.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A4CD9620607CC8E00B03983 /* Globals.h */; };
 		0A4CD96D0607CFC200B03983 /* Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A4CD96B0607CFC200B03983 /* Extensions.h */; };
-		0A4CD96E0607CFC200B03983 /* Extensions.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4CD96C0607CFC200B03983 /* Extensions.m */; };
 		0AD481D40607EBA0002E583F /* PreferencesController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AD481D20607EBA0002E583F /* PreferencesController.h */; };
 		0AD481D50607EBA0002E583F /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD481D30607EBA0002E583F /* PreferencesController.m */; };
 		0AD481E30607F395002E583F /* MyTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AD481E10607F395002E583F /* MyTableView.h */; };
 		0AD481E40607F395002E583F /* MyTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD481E20607F395002E583F /* MyTableView.m */; };
+		3C7A704C12B80F7400B767F3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3C7A704712B80E4400B767F3 /* MainMenu.xib */; };
 		8D1107280486CEB800E47090 /* Notification Watcher_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 32CA4F630368D1EE00C91783 /* Notification Watcher_Prefix.pch */; };
-		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -29,17 +28,16 @@
 		0A4CD9390607C46600B03983 /* WatcherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatcherController.m; sourceTree = "<group>"; };
 		0A4CD9620607CC8E00B03983 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
 		0A4CD96B0607CFC200B03983 /* Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Extensions.h; sourceTree = "<group>"; };
-		0A4CD96C0607CFC200B03983 /* Extensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Extensions.m; sourceTree = "<group>"; };
 		0AD481D20607EBA0002E583F /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		0AD481D30607EBA0002E583F /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		0AD481E10607F395002E583F /* MyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableView.h; sourceTree = "<group>"; };
 		0AD481E20607F395002E583F /* MyTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyTableView.m; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		32CA4F630368D1EE00C91783 /* Notification Watcher_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Notification Watcher_Prefix.pch"; sourceTree = "<group>"; };
+		3C7A704812B80E4400B767F3 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1107320486CEB800E47090 /* Notification Watcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notification Watcher.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -63,7 +61,6 @@
 				0A4CD9390607C46600B03983 /* WatcherController.m */,
 				0A4CD9620607CC8E00B03983 /* Globals.h */,
 				0A4CD96B0607CFC200B03983 /* Extensions.h */,
-				0A4CD96C0607CFC200B03983 /* Extensions.m */,
 				0AD481D20607EBA0002E583F /* PreferencesController.h */,
 				0AD481D30607EBA0002E583F /* PreferencesController.m */,
 				0AD481E10607F395002E583F /* MyTableView.h */,
@@ -121,9 +118,9 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				3C7A704712B80E4400B767F3 /* MainMenu.xib */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
-				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -182,7 +179,12 @@
 			isa = PBXProject;
 			buildConfigurationList = 0A098E5D09AC459F00B0C6CF /* Build configuration list for PBXProject "Notification Watcher" */;
 			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
 			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+				English,
+			);
 			mainGroup = 29B97314FDCFA39411CA2CEA /* Notification Watcher */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -197,8 +199,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
+				3C7A704C12B80F7400B767F3 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,7 +213,6 @@
 			files = (
 				8D11072D0486CEB800E47090 /* main.m in Sources */,
 				0A4CD93B0607C46600B03983 /* WatcherController.m in Sources */,
-				0A4CD96E0607CFC200B03983 /* Extensions.m in Sources */,
 				0AD481D50607EBA0002E583F /* PreferencesController.m in Sources */,
 				0AD481E40607F395002E583F /* MyTableView.m in Sources */,
 			);
@@ -228,12 +229,12 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		29B97318FDCFA39411CA2CEA /* MainMenu.nib */ = {
+		3C7A704712B80E4400B767F3 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				29B97319FDCFA39411CA2CEA /* English */,
+				3C7A704812B80E4400B767F3 /* English */,
 			);
-			name = MainMenu.nib;
+			name = MainMenu.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

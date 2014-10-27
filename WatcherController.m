@@ -1,6 +1,5 @@
 #import "WatcherController.h"
 #import "Globals.h"
-#import <mach-o/dyld.h>
 
 static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	NSFont *newFont = [[NSFontManager sharedFontManager] convertFont:aFont

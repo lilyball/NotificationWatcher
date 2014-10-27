@@ -1,7 +1,0 @@
-//
-// Prefix header for all source files of the 'Notification Watcher' target in the 'Notification Watcher' project
-//
-
-#ifdef __OBJC__
-    #import <Cocoa/Cocoa.h>
-#endif

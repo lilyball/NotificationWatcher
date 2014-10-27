@@ -254,8 +254,13 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Notification Watcher_Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = "Notification Watcher";
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Development;
@@ -267,8 +272,13 @@
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Notification Watcher_Prefix.pch";
+				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				INFOPLIST_FILE = Info.plist;
 				PRODUCT_NAME = "Notification Watcher";
+				WARNING_CFLAGS = (
+					"-Wall",
+					"-Wextra",
+				);
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;

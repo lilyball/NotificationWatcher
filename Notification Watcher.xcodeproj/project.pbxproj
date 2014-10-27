@@ -10,7 +10,6 @@
 		0A4CD93A0607C46600B03983 /* WatcherController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A4CD9380607C46600B03983 /* WatcherController.h */; };
 		0A4CD93B0607C46600B03983 /* WatcherController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0A4CD9390607C46600B03983 /* WatcherController.m */; };
 		0A4CD9630607CC8E00B03983 /* Globals.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A4CD9620607CC8E00B03983 /* Globals.h */; };
-		0A4CD96D0607CFC200B03983 /* Extensions.h in Headers */ = {isa = PBXBuildFile; fileRef = 0A4CD96B0607CFC200B03983 /* Extensions.h */; };
 		0AD481D40607EBA0002E583F /* PreferencesController.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AD481D20607EBA0002E583F /* PreferencesController.h */; };
 		0AD481D50607EBA0002E583F /* PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0AD481D30607EBA0002E583F /* PreferencesController.m */; };
 		0AD481E30607F395002E583F /* MyTableView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0AD481E10607F395002E583F /* MyTableView.h */; };
@@ -26,7 +25,6 @@
 		0A4CD9380607C46600B03983 /* WatcherController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WatcherController.h; sourceTree = "<group>"; };
 		0A4CD9390607C46600B03983 /* WatcherController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WatcherController.m; sourceTree = "<group>"; };
 		0A4CD9620607CC8E00B03983 /* Globals.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Globals.h; sourceTree = "<group>"; };
-		0A4CD96B0607CFC200B03983 /* Extensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Extensions.h; sourceTree = "<group>"; };
 		0AD481D20607EBA0002E583F /* PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreferencesController.h; sourceTree = "<group>"; };
 		0AD481D30607EBA0002E583F /* PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreferencesController.m; sourceTree = "<group>"; };
 		0AD481E10607F395002E583F /* MyTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyTableView.h; sourceTree = "<group>"; };
@@ -56,7 +54,6 @@
 				0A4CD9380607C46600B03983 /* WatcherController.h */,
 				0A4CD9390607C46600B03983 /* WatcherController.m */,
 				0A4CD9620607CC8E00B03983 /* Globals.h */,
-				0A4CD96B0607CFC200B03983 /* Extensions.h */,
 				0AD481D20607EBA0002E583F /* PreferencesController.h */,
 				0AD481D30607EBA0002E583F /* PreferencesController.m */,
 				0AD481E10607F395002E583F /* MyTableView.h */,
@@ -120,7 +117,6 @@
 			files = (
 				0A4CD93A0607C46600B03983 /* WatcherController.h in Headers */,
 				0A4CD9630607CC8E00B03983 /* Globals.h in Headers */,
-				0A4CD96D0607CFC200B03983 /* Extensions.h in Headers */,
 				0AD481D40607EBA0002E583F /* PreferencesController.h in Headers */,
 				0AD481E30607F395002E583F /* MyTableView.h in Headers */,
 			);

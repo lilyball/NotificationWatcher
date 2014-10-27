@@ -1,6 +1,5 @@
 #import "WatcherController.h"
 #import "Globals.h"
-#import "Extensions.h"
 #import <mach-o/dyld.h>
 
 static NSDictionary *italicAttributesForFont(NSFont *aFont) {

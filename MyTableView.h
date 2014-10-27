@@ -8,11 +8,6 @@
 
 #import <AppKit/AppKit.h>
 
-@interface MyTableView : NSTableView {
+@interface MyTableView : NSTableView
     
-}
-- (unsigned int)draggingSourceOperationMaskForLocal:(BOOL)isLocal;
-- (IBAction)copy:(id)sender;
-- (BOOL)becomeFirstResponder;
-
 @end

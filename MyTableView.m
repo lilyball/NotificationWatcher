@@ -10,7 +10,7 @@
 
 @implementation MyTableView
 
-- (unsigned int)draggingSourceOperationMaskForLocal:(BOOL)isLocal
+- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)isLocal
 {
     if (isLocal) {
         return NSDragOperationMove;

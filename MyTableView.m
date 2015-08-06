@@ -10,7 +10,7 @@
 
 @implementation MyTableView
 
-- (unsigned int)draggingSourceOperationMaskForLocal:(BOOL)isLocal
+- (NSDragOperation)draggingSourceOperationMaskForLocal:(BOOL)isLocal
 {
     if (isLocal) {
         return NSDragOperationMove;
@@ -19,7 +19,7 @@
     }
 }
 
-- (IBAction)copy:(id)sender
+- (IBAction)copy:(id __unused)sender
 {
     NSPasteboard *pb = [NSPasteboard generalPasteboard];
 	[[self dataSource] tableView:self writeRowsWithIndexes:[self selectedRowIndexes] toPasteboard:pb];

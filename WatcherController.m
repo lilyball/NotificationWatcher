@@ -1,7 +1,5 @@
 #import "WatcherController.h"
 #import "Globals.h"
-#import "Extensions.h"
-#import <mach-o/dyld.h>
 
 static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	NSFont *newFont = [[NSFontManager sharedFontManager] convertFont:aFont
@@ -64,12 +62,12 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	[prefsWindow makeKeyAndOrderFront:sender];
 }
 
-- (IBAction)didChangeFilter:(NSSearchField *)sender {
+- (IBAction)didChangeFilter:(NSSearchField * __unused)sender {
 	[distNotificationList noteNumberOfRowsChanged];
 	[wsNotificationList noteNumberOfRowsChanged];
 }
 
-- (IBAction)selectSearchField:(id)sender {
+- (IBAction)selectSearchField:(id __unused)sender {
 	[searchField becomeFirstResponder];
 }
 
@@ -154,7 +152,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	[userInfoList reloadData];
 }
 
-- (IBAction)clearNotifications:(id)sender {
+- (IBAction)clearNotifications:(id __unused)sender {
 	[selectedDistNotification release];
 	selectedDistNotification = nil;
 	[selectedWSNotification release];
@@ -262,7 +260,7 @@ static NSDictionary *italicAttributesForFont(NSFont *aFont) {
 	if (savedRowHeights == nil) {
 		savedRowHeights = [[NSMutableArray alloc] init];
 	}
-	if ([savedRowHeights count] < row + 1) {
+	if ((NSInteger)[savedRowHeights count] < row + 1) {
 		NSString *str = [[[[targetVar userInfo] allValues] objectAtIndex:row] description];
 		
 		NSSize size = [str sizeWithAttributes:[NSDictionary dictionaryWithObject:[NSFont fontWithName:@"Lucida Grande" size:11] forKey:NSFontAttributeName]];
